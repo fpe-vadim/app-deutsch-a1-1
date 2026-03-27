@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Немецкий язык — Тест A1.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0D0D0D;
+  --near-black: #111111;
+  --dark: #1A1A1A;
+  --mid: #2C2C2C;
+  --gray-700: #3D3D3D;
+  --gray-500: #707070;
+  --gray-300: #ABABAB;
+  --gray-100: #E8E8E8;
+  --gray-50: #F5F5F5;
+  --white: #FFFFFF;
+  --de-black: #1A1A1A;
+  --de-red: #CC0000;
+  --de-gold: #FFCC00;
+  --de-red-pale: #FFF0F0;
+  --de-gold-pale: #FFFBE6;
+  --green: #1A7A4A;
+  --green-pale: #EAF7EE;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--gray-50);
+  color: var(--black);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCREEN SYSTEM ── */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; }
+
+/* ── WELCOME SCREEN ── */
+#screen-welcome {
+  background: var(--black);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.de-stripe-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--de-black) 33.3%, var(--de-red) 33.3% 66.6%, var(--de-gold) 66.6%);
+}
+
+.de-stripe-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--de-black) 33.3%, var(--de-red) 33.3% 66.6%, var(--de-gold) 66.6%);
+}
+
+.welcome-content {
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  animation: welcomeIn 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes welcomeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.flag-container {
+  margin: 0 auto 2rem;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  animation: flagPulse 3s ease-in-out infinite;
+}
+
+@keyframes flagPulse {
+  0%,100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08); }
+  50% { box-shadow: 0 0 0 8px rgba(204,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.08); }
+}
+
+.welcome-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--de-gold);
+  margin-bottom: 12px;
+}
+
+.welcome-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.welcome-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-300);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.welcome-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gray-700);
+  margin: 0 auto 2.5rem;
+}
+
+/* ── FORM ── */
+.form-field {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: 'Manrope', sans-serif;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-input::placeholder { color: var(--gray-500); }
+
+.form-input:focus {
+  border-color: var(--de-gold);
+  background: rgba(255,204,0,0.04);
+}
+
+.form-input.error { border-color: var(--de-red); }
+
+.form-error {
+  font-size: 11px;
+  color: #FF6B6B;
+  margin-top: 6px;
+  display: none;
+}
+
+.form-error.show { display: block; }
+
+.btn-start {
+  width: 100%;
+  background: var(--de-gold);
+  color: var(--black);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  margin-top: 8px;
+  letter-spacing: 0.03em;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.btn-start:hover { background: #FFDA44; transform: translateY(-1px); }
+.btn-start:active { transform: translateY(0); }
+
+/* ── INSTRUCTIONS SCREEN ── */
+#screen-instructions {
+  background: var(--white);
+  padding: 2rem 1.5rem;
+  align-items: center;
+}
+
+.instructions-wrap {
+  max-width: 420px;
+  width: 100%;
+  animation: slideUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.instr-header {
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.instr-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--black);
+  color: var(--de-gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.instr-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.instr-subtitle {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.instr-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.instr-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-100);
+  background: var(--gray-50);
+  animation: fadeCard 0.4s ease both;
+}
+
+.instr-card:nth-child(1) { animation-delay: 0.05s; }
+.instr-card:nth-child(2) { animation-delay: 0.1s; }
+.instr-card:nth-child(3) { animation-delay: 0.15s; }
+.instr-card:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes fadeCard {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.instr-num {
+  width: 28px;
+  height: 28px;
+  background: var(--black);
+  color: var(--de-gold);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.instr-card-text {
+  font-size: 13px;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.instr-card-text strong { color: var(--black); }
+
+.grade-table {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 2rem;
+}
+
+.grade-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.grade-row:last-child { border-bottom: none; }
+
+.grade-range {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-300);
+}
+
+.grade-label {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.grade-red { background: rgba(204,0,0,0.25); color: #FF8080; }
+.grade-yellow { background: rgba(255,204,0,0.2); color: var(--de-gold); }
+.grade-green { background: rgba(26,122,74,0.3); color: #5DD68F; }
+
+.btn-begin {
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-begin:hover { background: var(--mid); transform: translateY(-1px); }
+
+/* ── EXAM SCREEN ── */
+#screen-exam {
+  background: var(--white);
+  flex-direction: column;
+}
+
+.exam-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.progress-stripe {
+  height: 3px;
+  background: var(--gray-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--de-gold);
+  transition: width 0.5s cubic-bezier(0.22,1,0.36,1);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, rgba(255,204,0,0.4));
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.topbar-counter {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+}
+
+.topbar-counter span {
+  color: var(--black);
+  font-size: 14px;
+}
+
+.topbar-pct {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-300);
+  background: var(--gray-50);
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--gray-100);
+}
+
+/* ── QUESTION AREA ── */
+.question-area {
+  flex: 1;
+  padding: 1.75rem 1.5rem 1rem;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.q-topic-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+
+.q-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+/* ── OPTIONS ── */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--gray-100);
+  border-radius: var(--radius);
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: left;
+  width: 100%;
+  font-family: 'Manrope', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--de-gold);
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.option-btn:hover {
+  border-color: var(--gray-300);
+  transform: translateX(2px);
+}
+
+.opt-letter {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-500);
+  flex-shrink: 0;
+  transition: all 0.18s;
+  position: relative;
+  z-index: 1;
+}
+
+.opt-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+
+.option-btn.selected {
+  border-color: var(--black);
+  background: var(--black);
+}
+
+.option-btn.selected .opt-letter {
+  background: var(--de-gold);
+  border-color: var(--de-gold);
+  color: var(--black);
+}
+
+.option-btn.selected .opt-text { color: var(--white); }
+
+.option-btn.selected:hover { transform: none; }
+
+/* ── EXAM FOOTER ── */
+.exam-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.btn-next {
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.btn-next.enabled {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.btn-next.enabled:hover { background: var(--mid); }
+
+/* ── QUESTION ANIMATION ── */
+.question-enter {
+  animation: questionIn 0.35s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes questionIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-sheet {
+  background: var(--white);
+  border-radius: 20px 20px 16px 16px;
+  padding: 1.75rem;
+  width: 100%;
+  max-width: 420px;
+  animation: sheetUp 0.35s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes sheetUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--gray-100);
+  border-radius: 100px;
+  margin: 0 auto 1.25rem;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.modal-text {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-actions { display: flex; flex-direction: column; gap: 8px; }
+
+.btn-modal-confirm {
+  padding: 13px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-modal-confirm:hover { background: var(--mid); }
+
+.btn-modal-cancel {
+  padding: 13px;
+  background: var(--gray-50);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-modal-cancel:hover { background: var(--gray-100); }
+
+/* ── RESULT SCREEN ── */
+#screen-result {
+  background: var(--black);
+  padding: 2rem 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.result-wrap {
+  max-width: 420px;
+  width: 100%;
+  padding: 1rem 0 2rem;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: resultIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes resultIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-flag {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.result-verdict {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.verdict-pass { background: rgba(26,122,74,0.3); color: #5DD68F; border: 1px solid rgba(93,214,143,0.3); }
+.verdict-fail { background: rgba(204,0,0,0.3); color: #FF8080; border: 1px solid rgba(255,128,128,0.3); }
+
+.result-score-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.result-score-denom {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+}
+
+/* ── RESULT CARDS ── */
+.result-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  animation: resultIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+
+.rc-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.rc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+}
+
+/* ── GRADE DISPLAY ── */
+.grade-display {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  animation: resultIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+}
+
+.grade-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.grade-desc {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grade-red-color { color: #FF8080; }
+.grade-yellow-color { color: var(--de-gold); }
+.grade-green-color { color: #5DD68F; }
+
+/* ── BREAKDOWN ── */
+.breakdown-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 1.25rem;
+  animation: resultIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+}
+
+.breakdown-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 14px;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.breakdown-row:last-child { margin-bottom: 0; }
+
+.bd-topic {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-300);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.bd-bar-wrap {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.bd-bar {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1s cubic-bezier(0.22,1,0.36,1);
+}
+
+.bd-bar-pass { background: #5DD68F; }
+.bd-bar-med { background: var(--de-gold); }
+.bd-bar-fail { background: #FF8080; }
+
+.bd-pct {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-300);
+  min-width: 32px;
+  text-align: right;
+}
+
+.student-info-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px;
+  animation: resultIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.35s both;
+}
+
+.si-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 12px;
+}
+
+.si-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  align-items: center;
+}
+
+.si-row:last-child { border-bottom: none; }
+.si-key { font-size: 12px; color: var(--gray-500); }
+.si-val { font-size: 12px; font-weight: 600; color: var(--gray-100); }
+
+.result-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--gray-700);
+  padding-top: 1rem;
+  line-height: 1.6;
+}
+
+/* ── BLOCKED ── */
+#screen-blocked {
+  background: var(--black);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.blocked-inner {
+  text-align: center;
+  max-width: 340px;
+}
+
+.blocked-icon {
+  font-size: 48px;
+  margin-bottom: 1.25rem;
+}
+
+.blocked-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.blocked-text {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ── UTILITY ── */
+.de-line {
+  height: 3px;
+  background: linear-gradient(to right, var(--de-black) 33.3%, var(--de-red) 33.3% 66.6%, var(--de-gold) 66.6%);
+  border-radius: 100px;
+  margin: 1.5rem 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ BLOCKED ══════════════ -->
+<div id="screen-blocked" class="screen">
+  <div class="blocked-inner">
+    <div class="blocked-icon">🔒</div>
+    <div class="blocked-title">Попытка исчерпана</div>
+    <div class="de-line"></div>
+    <p class="blocked-text">Вы уже прошли этот тест. Повторное прохождение не допускается.<br><br>Обратитесь к преподавателю, если считаете, что произошла ошибка.</p>
+  </div>
+</div>
+
+<!-- ══════════════ WELCOME ══════════════ -->
+<div id="screen-welcome" class="screen active">
+  <div class="de-stripe-top"></div>
+  <div class="welcome-content">
+    <div class="flag-container">🇩🇪</div>
+    <div class="welcome-eyebrow">Тест по немецкому языку</div>
+    <h1 class="welcome-title">Уровень A1.1</h1>
+    <p class="welcome-subtitle">Базовый курс · Официальная оценка</p>
+    <div class="welcome-divider"></div>
+
+    <div class="form-field">
+      <label class="form-label">Имя</label>
+      <input class="form-input" id="f-name" placeholder="Ваше имя" autocomplete="off">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Фамилия</label>
+      <input class="form-input" id="f-surname" placeholder="Ваша фамилия" autocomplete="off">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Курс / группа</label>
+      <input class="form-input" id="f-group" placeholder="Например: 1А, Группа Б" autocomplete="off">
+    </div>
+    <div class="form-error" id="form-error">Пожалуйста, заполните все поля.</div>
+
+    <button class="btn-start" onclick="goToInstructions()">Продолжить →</button>
+  </div>
+  <div class="de-stripe-bottom"></div>
+</div>
+
+<!-- ══════════════ INSTRUCTIONS ══════════════ -->
+<div id="screen-instructions" class="screen">
+  <div class="instructions-wrap">
+    <div class="instr-header">
+      <div class="instr-tag">🇩🇪 Немецкий A1.1</div>
+      <h2 class="instr-title">Инструкции</h2>
+      <p class="instr-subtitle">Внимательно прочитайте перед началом теста</p>
+    </div>
+
+    <div class="instr-cards">
+      <div class="instr-card">
+        <div class="instr-num">1</div>
+        <div class="instr-card-text">Тест состоит из <strong>100 вопросов</strong> по немецкому языку уровня A1.1</div>
+      </div>
+      <div class="instr-card">
+        <div class="instr-num">2</div>
+        <div class="instr-card-text">Для успешной сдачи необходимо набрать <strong>минимум 50%</strong> правильных ответов</div>
+      </div>
+      <div class="instr-card">
+        <div class="instr-num">3</div>
+        <div class="instr-card-text">Это соответствует оценке <strong>5 (удовлетворительно)</strong></div>
+      </div>
+      <div class="instr-card">
+        <div class="instr-num">4</div>
+        <div class="instr-card-text">У вас есть <strong>только 1 попытка</strong> для прохождения теста</div>
+      </div>
+    </div>
+
+    <div class="grade-table">
+      <div class="grade-row">
+        <span class="grade-range">0 – 4,9</span>
+        <span class="grade-label grade-red">неудовлетворительно</span>
+      </div>
+      <div class="grade-row">
+        <span class="grade-range">5 – 6,9</span>
+        <span class="grade-label grade-yellow">удовлетворительно</span>
+      </div>
+      <div class="grade-row">
+        <span class="grade-range">7 – 8,9</span>
+        <span class="grade-label grade-green">хорошо</span>
+      </div>
+      <div class="grade-row">
+        <span class="grade-range">9 – 10</span>
+        <span class="grade-label grade-green">отлично</span>
+      </div>
+    </div>
+
+    <button class="btn-begin" onclick="startExam()">
+      Начать тест →
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════ EXAM ══════════════ -->
+<div id="screen-exam" class="screen">
+  <div class="exam-topbar">
+    <div class="progress-stripe">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="topbar-inner">
+      <div class="topbar-counter">Вопрос <span id="q-num">1</span> из 100</div>
+      <div class="topbar-pct" id="topbar-pct">0%</div>
+    </div>
+  </div>
+
+  <div class="question-area" id="question-area">
+    <div class="q-topic-pill" id="q-topic">Лексика</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options-list" id="q-options"></div>
+  </div>
+
+  <div class="exam-footer">
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+      Далее →
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════ RESULT ══════════════ -->
+<div id="screen-result" class="screen">
+  <div class="result-wrap">
+    <div class="result-header">
+      <div class="result-flag">🇩🇪</div>
+      <div id="result-verdict" class="result-verdict"></div>
+      <div class="result-score-big" id="result-score">—</div>
+      <div class="result-score-denom">правильных из 100</div>
+    </div>
+
+    <div class="result-cards">
+      <div class="result-card">
+        <div class="rc-value" id="rc-pct">—</div>
+        <div class="rc-label">Процент</div>
+      </div>
+      <div class="result-card">
+        <div class="rc-value" id="rc-wrong">—</div>
+        <div class="rc-label">Ошибок</div>
+      </div>
+    </div>
+
+    <div class="grade-display">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px">Оценка</div>
+      <div class="grade-num" id="grade-num">—</div>
+      <div class="grade-desc" id="grade-desc">—</div>
+    </div>
+
+    <div class="breakdown-section">
+      <div class="breakdown-title">Результат по разделам</div>
+      <div id="breakdown-list"></div>
+    </div>
+
+    <div class="student-info-box">
+      <div class="si-label">Данные студента</div>
+      <div id="student-info-rows"></div>
+    </div>
+
+    <p class="result-note">Результат зафиксирован и не может быть изменён.<br>Покажите этот экран преподавателю.</p>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL ══════════════ -->
+<div class="modal-overlay" id="modal-confirm">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Завершить тест?</div>
+    <div class="modal-text">После отправки изменить ответы будет невозможно. Тест также нельзя будет пройти повторно. Вы уверены?</div>
+    <div class="modal-actions">
+      <button class="btn-modal-confirm" onclick="submitExam()">Да, завершить тест</button>
+      <button class="btn-modal-cancel" onclick="closeModal()">Проверить ответы</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  100 ВОПРОСОВ — НЕМЕЦКИЙ A1.1
+// ══════════════════════════════════════════════
+const QUESTIONS = [
+  // ПРИВЕТСТВИЯ
+  {id:1,topic:"Приветствия",text:"Как по-немецки «Привет» (неформально)?",opts:["Hallo","Tschüss","Danke","Bitte"],ans:0},
+  {id:2,topic:"Приветствия",text:"Как по-немецки «Добрый день»?",opts:["Guten Morgen","Guten Abend","Guten Tag","Gute Nacht"],ans:2},
+  {id:3,topic:"Приветствия",text:"Как по-немецки «Доброе утро»?",opts:["Guten Tag","Guten Morgen","Guten Abend","Gute Nacht"],ans:1},
+  {id:4,topic:"Приветствия",text:"Как по-немецки «Добрый вечер»?",opts:["Guten Morgen","Guten Tag","Gute Nacht","Guten Abend"],ans:3},
+  {id:5,topic:"Приветствия",text:"Как по-немецки «Спокойной ночи»?",opts:["Guten Abend","Guten Tag","Gute Nacht","Guten Morgen"],ans:2},
+  {id:6,topic:"Приветствия",text:"Как по-немецки «Пока» (неформально)?",opts:["Hallo","Tschüss","Danke","Bitte"],ans:1},
+  {id:7,topic:"Приветствия",text:"Как по-немецки «До свидания» (официально)?",opts:["Hallo","Tschüss","Auf Wiedersehen","Guten Tag"],ans:2},
+  {id:8,topic:"Приветствия",text:"Что значит «Danke»?",opts:["Пожалуйста","Извините","Спасибо","Привет"],ans:2},
+  {id:9,topic:"Приветствия",text:"Как по-немецки «Пожалуйста»?",opts:["Danke","Bitte","Entschuldigung","Hallo"],ans:1},
+  {id:10,topic:"Приветствия",text:"Как по-немецки «Извините»?",opts:["Danke","Bitte","Entschuldigung","Tschüss"],ans:2},
+  // МЕСТОИМЕНИЯ
+  {id:11,topic:"Местоимения",text:"Как по-немецки «я»?",opts:["du","er","ich","wir"],ans:2},
+  {id:12,topic:"Местоимения",text:"Как по-немецки «ты»?",opts:["ich","du","er","sie"],ans:1},
+  {id:13,topic:"Местоимения",text:"Как по-немецки «он»?",opts:["sie","es","er","wir"],ans:2},
+  {id:14,topic:"Местоимения",text:"Как по-немецки «она»?",opts:["er","es","ihr","sie"],ans:3},
+  {id:15,topic:"Местоимения",text:"Как по-немецки «оно»?",opts:["er","sie","es","wir"],ans:2},
+  {id:16,topic:"Местоимения",text:"Как по-немецки «мы»?",opts:["ihr","sie","wir","Sie"],ans:2},
+  {id:17,topic:"Местоимения",text:"Как по-немецки «вы» (неформально, мн.ч.)?",opts:["wir","Sie","ihr","sie"],ans:2},
+  {id:18,topic:"Местоимения",text:"Как по-немецки «они»?",opts:["wir","ihr","Sie","sie"],ans:3},
+  {id:19,topic:"Местоимения",text:"Как по-немецки «Вы» (формально)?",opts:["sie","ihr","wir","Sie"],ans:3},
+  // ЧИСЛА
+  {id:20,topic:"Числа",text:"Как по-немецки «один»?",opts:["zwei","drei","eins","vier"],ans:2},
+  {id:21,topic:"Числа",text:"Как по-немецки «два»?",opts:["eins","zwei","drei","fünf"],ans:1},
+  {id:22,topic:"Числа",text:"Как по-немецки «три»?",opts:["zwei","drei","vier","sechs"],ans:1},
+  {id:23,topic:"Числа",text:"Как по-немецки «четыре»?",opts:["drei","fünf","vier","sechs"],ans:2},
+  {id:24,topic:"Числа",text:"Как по-немецки «пять»?",opts:["vier","sechs","sieben","fünf"],ans:3},
+  {id:25,topic:"Числа",text:"Как по-немецки «десять»?",opts:["acht","neun","elf","zehn"],ans:3},
+  {id:26,topic:"Числа",text:"Как по-немецки «двадцать»?",opts:["zehn","dreißig","zwanzig","fünfzehn"],ans:2},
+  {id:27,topic:"Числа",text:"Как по-немецки «сто»?",opts:["tausend","hundert","zwanzig","fünfzig"],ans:1},
+  // АРТИКЛИ
+  {id:28,topic:"Артикли",text:"Какой определённый артикль у слова «Mann» (мужчина) — мужской род?",opts:["die","das","der","den"],ans:2},
+  {id:29,topic:"Артикли",text:"Какой определённый артикль у слова «Frau» (женщина) — женский род?",opts:["der","das","dem","die"],ans:3},
+  {id:30,topic:"Артикли",text:"Какой определённый артикль у слова «Kind» (ребёнок) — средний род?",opts:["der","die","das","dem"],ans:2},
+  {id:31,topic:"Артикли",text:"Какой неопределённый артикль у существительного мужского рода?",opts:["eine","ein","der","die"],ans:1},
+  {id:32,topic:"Артикли",text:"Какой неопределённый артикль у существительного женского рода?",opts:["ein","der","eine","die"],ans:2},
+  {id:33,topic:"Артикли",text:"Какой артикль у слова «Buch» (книга, средний род)?",opts:["der","die","ein","das"],ans:3},
+  {id:34,topic:"Артикли",text:"Какой артикль у слова «Schule» (школа, женский род)?",opts:["der","das","die","ein"],ans:2},
+  {id:35,topic:"Артикли",text:"Какой артикль у слова «Tisch» (стол, мужской род)?",opts:["die","das","eine","der"],ans:3},
+  // ГЛАГОЛЫ
+  {id:36,topic:"Глаголы",text:"Как спрягается «sein» (быть) для «ich»?",opts:["bist","sind","ist","bin"],ans:3},
+  {id:37,topic:"Глаголы",text:"Как спрягается «sein» для «du»?",opts:["bin","sind","bist","ist"],ans:2},
+  {id:38,topic:"Глаголы",text:"Как спрягается «sein» для «er/sie/es»?",opts:["bin","bist","sind","ist"],ans:3},
+  {id:39,topic:"Глаголы",text:"Как спрягается «haben» (иметь) для «ich»?",opts:["hast","haben","hat","habe"],ans:3},
+  {id:40,topic:"Глаголы",text:"Как спрягается «haben» для «du»?",opts:["habe","hat","haben","hast"],ans:3},
+  {id:41,topic:"Глаголы",text:"Как спрягается «machen» (делать) для «ich»?",opts:["machst","macht","machen","mache"],ans:3},
+  {id:42,topic:"Глаголы",text:"Как спрягается «sprechen» (говорить) для «ich spreche...»?",opts:["sprichst","sprechen","spricht","spreche"],ans:3},
+  {id:43,topic:"Глаголы",text:"Как спрягается «wohnen» (жить) для «er»?",opts:["wohnst","wohnen","wohnt","wohne"],ans:2},
+  {id:44,topic:"Глаголы",text:"Как по-немецки «я хочу» (wollen)?",opts:["will","willst","wollen","wollt"],ans:0},
+  {id:45,topic:"Глаголы",text:"Как по-немецки «я могу» (können)?",opts:["kannst","können","kann","konnt"],ans:2},
+  // ЛЕКСИКА — ДОМ И БЫТ
+  {id:46,topic:"Лексика",text:"Как по-немецки «дом»?",opts:["Schule","Haus","Stadt","Straße"],ans:1},
+  {id:47,topic:"Лексика",text:"Как по-немецки «школа»?",opts:["Universität","Haus","Schule","Markt"],ans:2},
+  {id:48,topic:"Лексика",text:"Как по-немецки «книга»?",opts:["Heft","Stift","Buch","Tisch"],ans:2},
+  {id:49,topic:"Лексика",text:"Как по-немецки «стол»?",opts:["Stuhl","Tisch","Fenster","Tür"],ans:1},
+  {id:50,topic:"Лексика",text:"Как по-немецки «стул»?",opts:["Tisch","Stuhl","Bett","Schrank"],ans:1},
+  {id:51,topic:"Лексика",text:"Как по-немецки «вода»?",opts:["Milch","Tee","Wasser","Saft"],ans:2},
+  {id:52,topic:"Лексика",text:"Как по-немецки «хлеб»?",opts:["Suppe","Brot","Fleisch","Fisch"],ans:1},
+  {id:53,topic:"Лексика",text:"Как по-немецки «молоко»?",opts:["Wasser","Saft","Tee","Milch"],ans:3},
+  {id:54,topic:"Лексика",text:"Как по-немецки «мать»?",opts:["Vater","Bruder","Mutter","Schwester"],ans:2},
+  {id:55,topic:"Лексика",text:"Как по-немецки «отец»?",opts:["Mutter","Vater","Sohn","Tochter"],ans:1},
+  {id:56,topic:"Лексика",text:"Как по-немецки «брат»?",opts:["Schwester","Bruder","Sohn","Onkel"],ans:1},
+  {id:57,topic:"Лексика",text:"Как по-немецки «сестра»?",opts:["Bruder","Tochter","Schwester","Tante"],ans:2},
+  {id:58,topic:"Лексика",text:"Как по-немецки «собака»?",opts:["Katze","Vogel","Hund","Fisch"],ans:2},
+  {id:59,topic:"Лексика",text:"Как по-немецки «кошка»?",opts:["Hund","Katze","Pferd","Vogel"],ans:1},
+  {id:60,topic:"Лексика",text:"Как по-немецки «город»?",opts:["Dorf","Land","Stadt","Straße"],ans:2},
+  {id:61,topic:"Лексика",text:"Как по-немецки «улица»?",opts:["Weg","Straße","Platz","Park"],ans:1},
+  {id:62,topic:"Лексика",text:"Как по-немецки «телефон»?",opts:["Fernseher","Computer","Telefon","Radio"],ans:2},
+  {id:63,topic:"Лексика",text:"Как по-немецки «друг»?",opts:["Nachbar","Freund","Kollege","Bekannter"],ans:1},
+  {id:64,topic:"Лексика",text:"Как по-немецки «большой»?",opts:["klein","neu","groß","alt"],ans:2},
+  {id:65,topic:"Лексика",text:"Как по-немецки «маленький»?",opts:["groß","klein","jung","hoch"],ans:1},
+  {id:66,topic:"Лексика",text:"Как по-немецки «хороший»?",opts:["schlecht","neu","gut","alt"],ans:2},
+  {id:67,topic:"Лексика",text:"Как по-немецки «плохой»?",opts:["gut","schlecht","schön","neu"],ans:1},
+  {id:68,topic:"Лексика",text:"Как по-немецки «новый»?",opts:["alt","neu","sauber","schön"],ans:1},
+  {id:69,topic:"Лексика",text:"Как по-немецки «старый»?",opts:["neu","jung","alt","schnell"],ans:2},
+  {id:70,topic:"Лексика",text:"Как по-немецки «быстрый»?",opts:["langsam","leise","laut","schnell"],ans:3},
+  // ЦВЕТА
+  {id:71,topic:"Цвета",text:"Как по-немецки «красный»?",opts:["blau","grün","rot","weiß"],ans:2},
+  {id:72,topic:"Цвета",text:"Как по-немецки «синий»?",opts:["rot","blau","gelb","schwarz"],ans:1},
+  {id:73,topic:"Цвета",text:"Как по-немецки «зелёный»?",opts:["blau","weiß","rot","grün"],ans:3},
+  {id:74,topic:"Цвета",text:"Как по-немецки «белый»?",opts:["schwarz","weiß","grau","rosa"],ans:1},
+  {id:75,topic:"Цвета",text:"Как по-немецки «чёрный»?",opts:["weiß","grau","schwarz","blau"],ans:2},
+  {id:76,topic:"Цвета",text:"Как по-немецки «жёлтый»?",opts:["orange","grün","blau","gelb"],ans:3},
+  // ДНИ НЕДЕЛИ
+  {id:77,topic:"Дни недели",text:"Как по-немецки «понедельник»?",opts:["Dienstag","Mittwoch","Montag","Donnerstag"],ans:2},
+  {id:78,topic:"Дни недели",text:"Как по-немецки «вторник»?",opts:["Montag","Dienstag","Mittwoch","Freitag"],ans:1},
+  {id:79,topic:"Дни недели",text:"Как по-немецки «среда»?",opts:["Dienstag","Donnerstag","Mittwoch","Samstag"],ans:2},
+  {id:80,topic:"Дни недели",text:"Как по-немецки «четверг»?",opts:["Mittwoch","Donnerstag","Freitag","Sonntag"],ans:1},
+  {id:81,topic:"Дни недели",text:"Как по-немецки «пятница»?",opts:["Donnerstag","Samstag","Freitag","Sonntag"],ans:2},
+  {id:82,topic:"Дни недели",text:"Как по-немецки «суббота»?",opts:["Freitag","Samstag","Sonntag","Montag"],ans:1},
+  {id:83,topic:"Дни недели",text:"Как по-немецки «воскресенье»?",opts:["Samstag","Freitag","Montag","Sonntag"],ans:3},
+  // МЕСЯЦЫ
+  {id:84,topic:"Месяцы",text:"Как по-немецки «январь»?",opts:["Februar","Dezember","März","Januar"],ans:3},
+  {id:85,topic:"Месяцы",text:"Как по-немецки «февраль»?",opts:["Januar","Februar","März","April"],ans:1},
+  {id:86,topic:"Месяцы",text:"Как по-немецки «март»?",opts:["Februar","April","März","Mai"],ans:2},
+  {id:87,topic:"Месяцы",text:"Как по-немецки «декабрь»?",opts:["November","Oktober","Dezember","September"],ans:2},
+  // ФРАЗЫ
+  {id:88,topic:"Фразы",text:"Как по-немецки «Меня зовут...»?",opts:["Ich lebe in...","Ich bin aus...","Ich heiße...","Ich möchte..."],ans:2},
+  {id:89,topic:"Фразы",text:"Как по-немецки «Как тебя зовут?»?",opts:["Wie geht es dir?","Wie heißt du?","Wo wohnst du?","Wie alt bist du?"],ans:1},
+  {id:90,topic:"Фразы",text:"Как по-немецки «Мне ... лет»?",opts:["Ich will ... Jahre","Ich bin ... Jahre alt","Ich lebe ... Jahre","Ich habe ... Jahre"],ans:1},
+  {id:91,topic:"Фразы",text:"Как по-немецки «Я из Германии»?",opts:["Ich lebe in Deutschland","Ich bin aus Deutschland","Ich bin in Deutschland","Ich mag Deutschland"],ans:1},
+  {id:92,topic:"Фразы",text:"Как по-немецки «Я живу в Берлине»?",opts:["Ich bin aus Berlin","Ich bin in Berlin","Ich lebe in Berlin","Ich mag Berlin"],ans:2},
+  {id:93,topic:"Фразы",text:"Как по-немецки «Я не понимаю»?",opts:["Ich spreche nicht","Ich weiß nicht","Ich verstehe nicht","Ich will nicht"],ans:2},
+  {id:94,topic:"Фразы",text:"Как по-немецки «Говорите медленнее, пожалуйста»?",opts:["Sprechen Sie lauter, bitte","Sprechen Sie langsamer, bitte","Sprechen Sie leiser, bitte","Sprechen Sie schneller, bitte"],ans:1},
+  {id:95,topic:"Фразы",text:"Как по-немецки «Приятно познакомиться»?",opts:["Wie geht es?","Auf Wiedersehen","Es freut mich","Danke schön"],ans:2},
+  // ГРАММАТИКА
+  {id:96,topic:"Грамматика",text:"Как образуется отрицание глагола в немецком?",opts:["ohne + глагол","kein + глагол","nicht + глагол","nein + глагол"],ans:2},
+  {id:97,topic:"Грамматика",text:"Какое слово ставится перед существительным для отрицания (напр. «нет книги»)?",opts:["nicht","nein","ohne","kein/keine"],ans:3},
+  {id:98,topic:"Грамматика",text:"Как по-немецки «Как дела?»?",opts:["Wie alt bist du?","Woher kommst du?","Wie heißt du?","Wie geht es dir?"],ans:3},
+  {id:99,topic:"Грамматика",text:"В немецком предложении глагол стоит на...",opts:["первом месте","последнем месте","третьем месте","втором месте"],ans:3},
+  {id:100,topic:"Грамматика",text:"Как по-немецки «Я говорю по-немецки» (sprechen)?",opts:["Ich sprichst Deutsch","Ich spricht Deutsch","Ich spreche Deutsch","Ich sprechen Deutsch"],ans:2}
+];
+
+// ══════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════
+const KEY = 'de_a1_exam_v1';
+
+let state = {
+  step: 'welcome', // welcome | instructions | exam | result
+  student: null,
+  currentQ: 0,
+  answers: new Array(100).fill(null),
+  submitted: false
+};
+
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function load() {
+  try {
+    const d = localStorage.getItem(KEY);
+    if (d) { state = Object.assign(state, JSON.parse(d)); return true; }
+  } catch(e) {}
+  return false;
+}
+
+// ══════════════════════════════════════════════
+//  SCREENS
+// ══════════════════════════════════════════════
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+function init() {
+  const has = load();
+  if (has && state.submitted) {
+    renderResult();
+    show('result');
+  } else if (has && state.student && state.step === 'exam') {
+    show('exam');
+    renderQuestion();
+  } else if (has && state.student && state.step === 'instructions') {
+    show('instructions');
+  } else {
+    show('welcome');
+  }
+}
+
+// ══════════════════════════════════════════════
+//  WELCOME → INSTRUCTIONS
+// ══════════════════════════════════════════════
+function goToInstructions() {
+  const name = document.getElementById('f-name').value.trim();
+  const surname = document.getElementById('f-surname').value.trim();
+  const group = document.getElementById('f-group').value.trim();
+  const err = document.getElementById('form-error');
+  const inputs = ['f-name','f-surname','f-group'];
+  let valid = true;
+
+  inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+
+  if (!valid) { err.classList.add('show'); return; }
+  err.classList.remove('show');
+
+  state.student = { name, surname, group };
+  state.step = 'instructions';
+  save();
+  show('instructions');
+}
+
+function startExam() {
+  state.step = 'exam';
+  state.currentQ = 0;
+  save();
+  show('exam');
+  renderQuestion();
+}
+
+// ══════════════════════════════════════════════
+//  EXAM
+// ══════════════════════════════════════════════
+const LETTERS = ['A','B','C','D'];
+
+function renderQuestion() {
+  const q = QUESTIONS[state.currentQ];
+  const num = state.currentQ + 1;
+  const pct = Math.round((num / 100) * 100);
+
+  document.getElementById('q-num').textContent = num;
+  document.getElementById('topbar-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('q-topic').textContent = q.topic;
+  document.getElementById('q-text').textContent = `${num}. ${q.text}`;
+
+  const isLast = state.currentQ === 99;
+  const btn = document.getElementById('btn-next');
+  btn.textContent = isLast ? 'Завершить тест ✓' : 'Далее →';
+
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn' + (state.answers[state.currentQ] === i ? ' selected' : '');
+    btn.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span><span class="opt-text">${opt}</span>`;
+    btn.addEventListener('click', () => select(i));
+    container.appendChild(btn);
+  });
+
+  updateNextBtn();
+
+  // animate
+  const area = document.getElementById('question-area');
+  area.classList.remove('question-enter');
+  void area.offsetWidth;
+  area.classList.add('question-enter');
+}
+
+function select(idx) {
+  state.answers[state.currentQ] = idx;
+  save();
+  document.querySelectorAll('.option-btn').forEach((b, i) => {
+    b.classList.toggle('selected', i === idx);
+  });
+  updateNextBtn();
+}
+
+function updateNextBtn() {
+  const btn = document.getElementById('btn-next');
+  const hasAnswer = state.answers[state.currentQ] !== null;
+  btn.classList.toggle('enabled', hasAnswer);
+}
+
+function nextQuestion() {
+  if (state.answers[state.currentQ] === null) return;
+  if (state.currentQ === 99) {
+    document.getElementById('modal-confirm').classList.add('open');
+    return;
+  }
+  state.currentQ++;
+  save();
+  renderQuestion();
+}
+
+function closeModal() {
+  document.getElementById('modal-confirm').classList.remove('open');
+}
+
+function submitExam() {
+  closeModal();
+  state.submitted = true;
+  save();
+  renderResult();
+  show('result');
+}
+
+// ══════════════════════════════════════════════
+//  RESULT
+// ══════════════════════════════════════════════
+function calcGrade(pct) {
+  const g = (pct / 100) * 10;
+  return Math.round(g * 10) / 10;
+}
+
+function gradeClass(grade) {
+  if (grade < 5) return 'grade-red-color';
+  if (grade < 7) return 'grade-yellow-color';
+  return 'grade-green-color';
+}
+
+function gradeDesc(grade) {
+  if (grade < 5) return 'НЕУДОВЛЕТВОРИТЕЛЬНО';
+  if (grade < 7) return 'УДОВЛЕТВОРИТЕЛЬНО';
+  if (grade < 9) return 'ХОРОШО';
+  return 'ОТЛИЧНО';
+}
+
+function renderResult() {
+  let correct = 0;
+  const topicStats = {};
+
+  QUESTIONS.forEach((q, i) => {
+    if (!topicStats[q.topic]) topicStats[q.topic] = { c: 0, t: 0 };
+    topicStats[q.topic].t++;
+    if (state.answers[i] === q.ans) {
+      correct++;
+      topicStats[q.topic].c++;
+    }
+  });
+
+  const pct = correct;
+  const passed = correct >= 50;
+  const grade = calcGrade(pct);
+  const gClass = gradeClass(grade);
+
+  document.getElementById('result-score').textContent = correct;
+  document.getElementById('rc-pct').textContent = pct + '%';
+  document.getElementById('rc-wrong').textContent = 100 - correct;
+
+  document.getElementById('result-verdict').className = 'result-verdict ' + (passed ? 'verdict-pass' : 'verdict-fail');
+  document.getElementById('result-verdict').textContent = passed ? 'СДАНО' : 'НЕ СДАНО';
+
+  const gradeEl = document.getElementById('grade-num');
+  gradeEl.textContent = grade.toFixed(1);
+  gradeEl.className = 'grade-num ' + gClass;
+
+  const descEl = document.getElementById('grade-desc');
+  descEl.textContent = gradeDesc(grade);
+  descEl.className = 'grade-desc ' + gClass;
+
+  // Breakdown
+  const bd = document.getElementById('breakdown-list');
+  bd.innerHTML = Object.entries(topicStats).map(([topic, s]) => {
+    const p = Math.round((s.c / s.t) * 100);
+    const barClass = p >= 70 ? 'bd-bar-pass' : p >= 50 ? 'bd-bar-med' : 'bd-bar-fail';
+    return `<div class="breakdown-row">
+      <span class="bd-topic">${topic}</span>
+      <div class="bd-bar-wrap"><div class="bd-bar ${barClass}" style="width:0%" data-w="${p}"></div></div>
+      <span class="bd-pct">${p}%</span>
+    </div>`;
+  }).join('');
+
+  // Animate bars after render
+  setTimeout(() => {
+    document.querySelectorAll('.bd-bar').forEach(bar => {
+      bar.style.width = bar.dataset.w + '%';
+    });
+  }, 300);
+
+  // Student info
+  const s = state.student;
+  document.getElementById('student-info-rows').innerHTML = [
+    ['Имя', s.name],
+    ['Фамилия', s.surname],
+    ['Курс / группа', s.group],
+    ['Уровень', 'Немецкий A1.1'],
+    ['Результат', correct + ' / 100'],
+    ['Оценка', grade.toFixed(1)]
+  ].map(([k, v]) =>
+    `<div class="si-row"><span class="si-key">${k}</span><span class="si-val">${v}</span></div>`
+  ).join('');
+}
+
+// ══════════════════════════════════════════════
+//  INPUT error clear
+// ══════════════════════════════════════════════
+['f-name','f-surname','f-group'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => el.classList.remove('error'));
+});
+
+// Block back navigation during exam
+history.pushState(null, '', location.href);
+window.addEventListener('popstate', () => {
+  if (state.step === 'exam' && !state.submitted) {
+    history.pushState(null, '', location.href);
+  }
+});
+
+init();
+</script>
+</body>
+</html>
